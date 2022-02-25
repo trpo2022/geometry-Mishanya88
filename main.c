@@ -38,7 +38,7 @@ int main()
     if (error_code(str) == 1) {
         n = pars_strok(str);
         perimeter = 2 * PI * n;
-        area = PIpow(n, 2);
+        area = PI*pow(n, 2);
         printf("perimeter = %f\n", perimeter);
         printf("area = %f", area);
     }
