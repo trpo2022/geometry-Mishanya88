@@ -16,7 +16,7 @@ int error_code(char str[])
 double pars_strok(char str[])
 {
     double x = 0, y = 0, rad;
-    char probel_x, probel_y, probel_radius;
+    char *probel_x, *probel_y, *probel_radius;
     for (int i = 0; i < 100; i++) {
         if (str[i - 1] == '(')
             probel_x = &str[i];
