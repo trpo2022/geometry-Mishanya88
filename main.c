@@ -1,16 +1,46 @@
-#include <cstdlib>
+#include <iostream>
 #include <math.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
-double PI = 3.141592;
 int error_code(char str[])
 {
+    int s = 0;
     char* figure = strstr(str, "circle");
     if (figure == NULL) {
         printf("Error at column 0: expected 'circle'\n\n");
-    } else {
         return 1;
     }
+    int c = 0;
+    for (int i = 0; i < 100; i++) {
+        if (str[i] == '(') {
+            c = i;
+            i++;
+            while (str[i] != ')') {
+                if (isdigit(str[i]) == 0 && str[i] != ' ' && str[i] != ','
+                    && str[i] != '.') {
+                    printf("Error at column %d: expected <double>\n\n", i);
+                    return 2;
+                }
+                i++;
+                if (str[i] == '\0') {
+                    break;
+                }
+            }
+        }
+    }
+    for (int i = 0; str[i] != '\0'; i++) {
+        if (str[i + 1] == '\0' && str[i] != ')') {
+            printf("Error at column %d: expected ) \n\n", i);
+            return 3;
+        }
+
+        if (str[i] == ')' && str[i + 1] != '\0') {
+            printf("Error at column %d: unexpected token \n\n", i);
+            return 4;
+        }
+    }
+    return 5;
 }
 
 double pars_strok(char str[])
@@ -35,10 +65,10 @@ int main()
     char str[100];
     double n = 0, perimeter = 0, area = 0;
     gets(str);
-    if (error_code(str) == 1) {
+    if (error_code(str) == 5) {
         n = pars_strok(str);
-        perimeter = 2 * PI * n;
-        area = PI*pow(n, 2);
+        perimeter = 2 * M_PI * n;
+        area = M_PI * pow(n, 2);
         printf("perimeter = %f\n", perimeter);
         printf("area = %f", area);
     }
