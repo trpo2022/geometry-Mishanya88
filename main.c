@@ -29,10 +29,10 @@ int error_code(char str[])
                 }
             }
         }
-        if (str[i + 2] == '\0' && str[i] != ')') {
+        /*if (str[i + 2] == '\0' && str[i] != ')') {
             printf("Error at column %d: expected ) \n\n", i);
             return 3;
-        }
+        }*/
 
         if (str[i] == ')' && str[i + 2] != '\0') {
             if (str[i + 1] == ' ' && str[i + 3] == '\0') {
