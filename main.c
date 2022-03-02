@@ -56,11 +56,13 @@ double pars_strok(char str[])
     double rad;
     // char *probel_x, *probel_y, *probel_radius;
     char* probel_radius;
+    // printf("ddf");
     for (int i = 0; i < 100; i++) {
-        if (str[i - 1] == '(')
-            // probel_x = &str[i];
-            if (str[i - 1] == ',')
-                probel_radius = &str[i];
+        // if (str[i - 1] == '(')
+        // probel_x = &str[i];
+        if (str[i - 1] == ',') {
+            probel_radius = &str[i];
+        }
         if (str[i + 1] == '\0')
             break;
     }
@@ -74,12 +76,14 @@ int main()
     char str[100];
     double n = 0, perimeter = 0, area = 0;
     fgets(str, 100, stdin);
-    printf("%s", str);
+    // printf("%s", str);
     if (error_code(str) == 5) {
+        // printf("ddf");
         n = pars_strok(str);
         perimeter = 2 * M_PI * n;
         area = M_PI * pow(n, 2);
         printf("perimeter = %f\n", perimeter);
-        printf("area = %f", area);
+        printf("area = %f\n", area);
     }
+    return 0;
 }
