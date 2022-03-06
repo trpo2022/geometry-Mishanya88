@@ -47,9 +47,7 @@ int error_code(char str[])
 
 void pars_strok(char str[], double arr[])
 {
-    double x = 0, y = 0, rad = 0;
     char *probel_x, *probel_y, *probel_radius;
-    char* probel_radius;
     for (int i = 0; i < 100; i++) {
         if (str[i - 1] == '(') {
             probel_x = &str[i];
@@ -67,7 +65,7 @@ void pars_strok(char str[], double arr[])
 int main()
 {
     char str[100];
-    double n = 0, perimeter = 0, area = 0, arr[3];
+    double arr[3];
     fgets(str, 100, stdin);
     if (error_code(str) == 5) {
         pars_strok(str, arr);
