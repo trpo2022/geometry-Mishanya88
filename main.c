@@ -47,74 +47,32 @@ int error_code(char str[])
 
 void pars_strok(char str[], double arr[])
 {
-<<<<<<< HEAD
-    double rad;
-    char* probel_radius;
-||||||| f595977
-    // double x, y, rad;
-    double rad;
-    // char *probel_x, *probel_y, *probel_radius;
-    char* probel_radius;
-    // printf("ddf");
-=======
     char *probel_x, *probel_y, *probel_radius;
->>>>>>> Vivod
     for (int i = 0; i < 100; i++) {
-<<<<<<< HEAD
-||||||| f595977
-        // if (str[i - 1] == '(')
-        // probel_x = &str[i];
-=======
         if (str[i - 1] == '(') {
             probel_x = &str[i];
         }
->>>>>>> Vivod
-        if (str[i - 1] == ',') {
-            probel_radius = &str[i];
+            if (str[i - 1] == ',') {
+                probel_radius = &str[i];
+            }
+            if (str[i + 1] == '\0')
+                break;
         }
-        if (str[i + 1] == '\0')
-            break;
+        arr[0] = strtod(probel_x, &probel_y);
+        arr[1] = strtod(probel_y, NULL);
+        arr[2] = strtod(probel_radius, NULL);
     }
-<<<<<<< HEAD
-    rad = strtod(probel_radius, NULL);
-    return rad;
-||||||| f595977
-    // x = strtod(probel_x, &probel_y);
-    // y = strtod(probel_y, NULL);
-    rad = strtod(probel_radius, NULL);
-    return rad;
-=======
-    arr[0] = strtod(probel_x, &probel_y);
-    arr[1] = strtod(probel_y, NULL);
-    arr[2] = strtod(probel_radius, NULL);
->>>>>>> Vivod
-}
-int main()
-{
-    char str[100];
-    double arr[3];
-    fgets(str, 100, stdin);
-    if (error_code(str) == 5) {
-<<<<<<< HEAD
-        n = pars_strok(str);
-        perimeter = 2 * M_PI * n;
-        area = M_PI * pow(n, 2);
-        printf("perimeter = %f\n", perimeter);
-        printf("area = %f\n", area);
-||||||| f595977
-        // printf("ddf");
-        n = pars_strok(str);
-        perimeter = 2 * M_PI * n;
-        area = M_PI * pow(n, 2);
-        printf("perimeter = %f\n", perimeter);
-        printf("area = %f\n", area);
-=======
-        pars_strok(str, arr);
-        printf("circle\n");
-        printf("x = %.4f\n", arr[0]);
-        printf("y = %.4f\n", arr[1]);
-        printf("radius = %.4f\n", arr[2]);
->>>>>>> Vivod
+    int main()
+    {
+        char str[100];
+        double arr[3];
+        fgets(str, 100, stdin);
+        if (error_code(str) == 5) {
+            pars_strok(str, arr);
+            printf("circle\n");
+            printf("x = %.4f\n", arr[0]);
+            printf("y = %.4f\n", arr[1]);
+            printf("radius = %.4f\n", arr[2]);
+        }
+        return 0;
     }
-    return 0;
-}
