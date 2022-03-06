@@ -29,11 +29,6 @@ int error_code(char str[])
                 }
             }
         }
-        /*if (str[i + 2] == '\0' && str[i] != ')') {
-            printf("Error at column %d: expected ) \n\n", i);
-            return 3;
-        }*/
-
         if (str[i] == ')' && str[i + 2] != '\0') {
             if (str[i + 1] == ' ' && str[i + 3] == '\0') {
                 break;
@@ -79,10 +74,6 @@ int main()
         printf("x%f\n", arr[0]);
         printf("y%f\n", arr[1]);
         printf("radius%f\n", arr[2]);
-        perimeter = 2 * M_PI * n;
-        area = M_PI * pow(n, 2);
-        printf("perimeter = %f\n", perimeter);
-        printf("area = %f\n", area);
     }
     return 0;
 }
