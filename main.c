@@ -69,9 +69,10 @@ int main()
     fgets(str, 100, stdin);
     if (error_code(str) == 5) {
         pars_strok(str, arr);
-        printf("x%f\n", arr[0]);
-        printf("y%f\n", arr[1]);
-        printf("radius%f\n", arr[2]);
+        printf("circle\n");
+        printf("x = %.4f\n", arr[0]);
+        printf("y = %.4f\n", arr[1]);
+        printf("radius = %.4f\n", arr[2]);
     }
     return 0;
 }
