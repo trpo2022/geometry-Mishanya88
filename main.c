@@ -50,36 +50,35 @@ int error_code(char str[])
     return 5;
 }
 
-double pars_strok(char str[])
+void pars_strok(char str[], double arr[])
 {
-    // double x, y, rad;
-    double rad;
-    // char *probel_x, *probel_y, *probel_radius;
+    double x = 0, y = 0, rad = 0;
+    char *probel_x, *probel_y, *probel_radius;
     char* probel_radius;
-    // printf("ddf");
     for (int i = 0; i < 100; i++) {
-        // if (str[i - 1] == '(')
-        // probel_x = &str[i];
+        if (str[i - 1] == '(') {
+            probel_x = &str[i];
+        }
         if (str[i - 1] == ',') {
             probel_radius = &str[i];
         }
         if (str[i + 1] == '\0')
             break;
     }
-    // x = strtod(probel_x, &probel_y);
-    // y = strtod(probel_y, NULL);
-    rad = strtod(probel_radius, NULL);
-    return rad;
+    arr[0] = strtod(probel_x, &probel_y);
+    arr[1] = strtod(probel_y, NULL);
+    arr[2] = strtod(probel_radius, NULL);
 }
 int main()
 {
     char str[100];
-    double n = 0, perimeter = 0, area = 0;
+    double n = 0, perimeter = 0, area = 0, arr[3];
     fgets(str, 100, stdin);
-    // printf("%s", str);
     if (error_code(str) == 5) {
-        // printf("ddf");
-        n = pars_strok(str);
+        pars_strok(str, arr);
+        printf("x%f\n", arr[0]);
+        printf("y%f\n", arr[1]);
+        printf("radius%f\n", arr[2]);
         perimeter = 2 * M_PI * n;
         area = M_PI * pow(n, 2);
         printf("perimeter = %f\n", perimeter);
