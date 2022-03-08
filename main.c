@@ -3,12 +3,22 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-int error_code(char str[])
+int error_code(char str[], char buf[])
 {
+    int z = 0;
     char* figure = strstr(str, "circle");
     if (figure == NULL) {
         printf("Error at column 0: expected 'circle'\n\n");
         return 1;
+    } else {
+        for (int i = 0; i < 100; i++) {
+            if (str[i] != '(') {
+                buf[z] = str[i];
+                z++;
+            } else {
+                break;
+            }
+        }
     }
     for (int i = 0; i < 100; i++) {
         if (str[i] == '(') {
@@ -52,27 +62,27 @@ void pars_strok(char str[], double arr[])
         if (str[i - 1] == '(') {
             probel_x = &str[i];
         }
-            if (str[i - 1] == ',') {
-                probel_radius = &str[i];
-            }
-            if (str[i + 1] == '\0')
-                break;
+        if (str[i - 1] == ',') {
+            probel_radius = &str[i];
         }
-        arr[0] = strtod(probel_x, &probel_y);
-        arr[1] = strtod(probel_y, NULL);
-        arr[2] = strtod(probel_radius, NULL);
+        if (str[i + 1] == '\0')
+            break;
     }
-    int main()
-    {
-        char str[100];
-        double arr[3];
-        fgets(str, 100, stdin);
-        if (error_code(str) == 5) {
-            pars_strok(str, arr);
-            printf("circle\n");
-            printf("x = %.4f\n", arr[0]);
-            printf("y = %.4f\n", arr[1]);
-            printf("radius = %.4f\n", arr[2]);
-        }
-        return 0;
+    arr[0] = strtod(probel_x, &probel_y);
+    arr[1] = strtod(probel_y, NULL);
+    arr[2] = strtod(probel_radius, NULL);
+}
+int main()
+{
+    char str[100], buf[100] = {0};
+    double arr[3];
+    fgets(str, 100, stdin);
+    if (error_code(str, buf) == 5) {
+        pars_strok(str, arr);
+        printf("%s\n", buf);
+        printf("x = %.4f\n", arr[0]);
+        printf("y = %.4f\n", arr[1]);
+        printf("radius = %.4f\n", arr[2]);
     }
+    return 0;
+}
