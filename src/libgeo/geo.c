@@ -1,4 +1,4 @@
-#include "geo.h"
+#include "libgeo/geo.h"
 void pars_strok(char str[], double arr[])
 {
     char *probel_x, *probel_y, *probel_radius;
