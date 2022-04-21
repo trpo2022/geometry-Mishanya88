@@ -1,9 +1,9 @@
 #include <ctype.h>
+#include <geo.h>
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <geo.h>
 int main()
 {
     char str[100], buf[100] = {0};
