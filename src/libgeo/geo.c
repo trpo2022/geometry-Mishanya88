@@ -1,6 +1,6 @@
 #include <ctype.h>
-#include <math.h>
 #include <geo.h>
+#include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -76,4 +76,32 @@ void intersection(int i, struct figure a[], int n)
                     >= abs(a[i].r - a[j].r)))
                 printf("intersects: = %d \n", j + 1);
     }
+}
+int input(char str[], struct figure a[])
+{
+    int n = 0;
+    while (1) {
+        if (fgets(str, 100, stdin) == NULL)
+            break;
+        if (strcmp(str, "\n") == 0)
+            break;
+        if (error_code(str, n, a) != 5)
+            break;
+        else
+            pars_strok(str, n, a);
+        n++;
+    }
+    return n;
+}
+double perimeter(struct figure a[], int i)
+{
+    double perimeter;
+    perimeter = 2 * M_PI * a[i].r;
+    return perimeter;
+}
+double area(struct figure a[], int i)
+{
+    double area;
+    area = M_PI * pow(a[i].r, 2);
+    return area;
 }
