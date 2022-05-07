@@ -2,18 +2,6 @@
 #include <geo.h>
 #include <math.h>
 #include <stdlib.h>
-
-CTEST(geometry_suite, input_0)
-{
-    struct figure a[2];
-    char str[100]
-            = "cirlce(2 1,10)\n"
-              "circle(3 4, 6)\n"
-              "\n";
-    int exp = 2;
-    int real = input(str, a);
-    ASSERT_EQUAL(exp, real);
-}
 CTEST(geometry_suite, pars_1)
 {
     struct figure a[1];
