@@ -10,7 +10,7 @@ int main()
     int n = 0;
     struct figure* a;
     a = (struct figure*)malloc(1000 * sizeof(struct figure));
-    n=input(str, a);
+    n = input(str, a);
     for (int i = 0; i < n; i++) {
         printf("%d. %s", i + 1, a[i].Name_full);
         printf("perimeter = %f\n", perimeter(a, i));
